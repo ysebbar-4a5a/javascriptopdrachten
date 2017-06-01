@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+            
+        </style>
+    </head>
+    <body>
+        <div><input type="button" onclick="fireUP()" value="fire"></div>
+        <input type="text" id="nm">
+        <div id="demo"></div>
+
+        <script>
+        function fireUP() {
+            var nummer = document.getElementById('nm').value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(this.responseText,"text/xml");
+                    var html = "";
+                    html += "<table><tr>";
+                    html += "<th>id</th>";
+                    html += "<th>name</th></tr>";
+                    html += "<td>";
+                    html += xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+                    html += "</td>";
+                    html += "<td>";
+                    html += xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                    html += "</td></tr></table>";
+
+                    document.getElementById("demo").innerHTML = html;
+                }
+             };
+            xhttp.open("GET", "api-countries.php?output=xml&id="+nummer+"", true);
+            xhttp.send();
+        }
+        </script>
+            
+            
+    </body>
+</html>

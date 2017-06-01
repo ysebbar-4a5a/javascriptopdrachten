@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #divv{
+                border:1px solid black;
+                width:100px;
+                height: 100px;
+                color: white;
+                border-radius: 50px;
+                background-color: black;
+                text-align: center;
+            }
+            #hier{
+                margin-top: 27px;
+                font-size: 40px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="divv"><p id="hier"></p></div>
+        
+                <script>
+            var counter = 100;
+            function show(){
+                document.getElementById('hier').innerHTML=counter;
+                if(counter === 0){
+                   clearTimeout(timeoutvar);
+                }else{
+                counter--;
+                }
+            }
+         var timeoutvar = setInterval(show, 300);
+
+            
+           
+        </script>
+    </body>
+</html>
